@@ -1,6 +1,7 @@
 package com.example.demo.Utils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
+import org.springframework.stereotype.Component;
+@Component
 public class UserUtills {
 	private static BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     public String hashPassword(String plainText) {

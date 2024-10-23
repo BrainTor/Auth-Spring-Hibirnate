@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="login-page">
+        <div class="form">
+          <form class="register-form">
+            <input type="text" placeholder="name" id="login_reg"/>
+            <input type="password" placeholder="password" id="password_reg"/>
+            <input type="text" placeholder="email address" id="email_reg"/>
+            <button id="reg">create</button>
+            <p class="message">Already registered? <a class="toggle" >Sign In</a></p>
+          </form>
+          <form class="login-form">
+            <input type="text" placeholder="username" id="login_log"/>
+            <input type="password" placeholder="password" id="password_log"/>
+            <button id="log">login</button>
+            <p class="message">Not registered? <a class="toggle">Create an account</a></p>
+          </form>
+        </div>
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
