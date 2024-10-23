@@ -5,9 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.example.demo.services.UserService;
-
 import  com.example.demo.Object.Auth.Login;
 import com.example.demo.Object.Auth.Register;
 
@@ -22,14 +20,18 @@ public class UserController {
 	@PostMapping("/login")
 	private ResponseEntity<String> login_func(@RequestBody Login login){
 		String token = userService.login_user(login.getLogin(), login.getPassword());
-		System.out.println(token);
-		return new ResponseEntity<String>("", HttpStatus.OK);
+		if(token.equals("user unregistered"))
+			return new ResponseEntity<String>(token, HttpStatus.FORBIDDEN);
+		else if(token.equals("wrong password")) 
+			return new ResponseEntity<String>(token, HttpStatus.FORBIDDEN);
+		return new ResponseEntity<String>(token, HttpStatus.OK);
 	}
 	@PostMapping("/reg")
 	private ResponseEntity<String> reg_func(@RequestBody Register register){
 		String token = userService.register_user(register.getLogin(), register.getPassword(), register.getEmail());
-		System.out.println(token);
-		return new ResponseEntity<String>("", HttpStatus.OK);
+		if(token.equals("user registred"))
+			return new ResponseEntity<String>("user registred", HttpStatus.FORBIDDEN);
+		return new ResponseEntity<String>(token, HttpStatus.OK);
 	}
 
 }
